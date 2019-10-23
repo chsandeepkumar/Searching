@@ -1,25 +1,28 @@
-public class BinarySearchService
+namespace BinarySearching
 {
-    public static int SearchItem(int[]inputCollection,int targetItem)
+    public class BinarySearchService
     {
-        
-        if(inputCollection.Length==0) return -1;
-        int startIndex=0;
-        int maxIndex=inputCollection.Length-1;
-        while(startIndex<=maxIndex)
+        public static int SearchItem(int[]inputCollection,int targetItem)
         {
-            int guessItemIndex=ComputeGuessItemIndex(startIndex,maxIndex);        
-            if(targetItem==inputCollection[guessItemIndex]) return guessItemIndex;
+        
+            if(inputCollection.Length==0) return -1;
+            int startIndex=0;
+            int maxIndex=inputCollection.Length-1;
+            while(startIndex<=maxIndex)
+            {
+                int guessItemIndex=ComputeGuessItemIndex(startIndex,maxIndex);        
+                if(targetItem==inputCollection[guessItemIndex]) return guessItemIndex;
 
-            if(targetItem<inputCollection[guessItemIndex])
-            maxIndex=guessItemIndex-1;
-            else
-            startIndex=guessItemIndex+1;            
+                if(targetItem<inputCollection[guessItemIndex])
+                    maxIndex=guessItemIndex-1;
+                else
+                    startIndex=guessItemIndex+1;            
+            }
+
+            return -1;
         }
 
-        return -1;
-    }
-
-    private static int ComputeGuessItemIndex(int startIndex, int maxIndex)=> startIndex+maxIndex/2;
+        private static int ComputeGuessItemIndex(int startIndex, int maxIndex)=> (startIndex+maxIndex)/2;
     
+    }
 }
